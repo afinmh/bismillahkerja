@@ -87,7 +87,10 @@ const ChatComponent = () => {
 
         // Check for bad words
         const lowerMsg = inputValue.toLowerCase();
-        const hasBadWord = badWords.some(word => lowerMsg.includes(word));
+        const hasBadWord = badWords.some(word => {
+            const regex = new RegExp(`\\b${word}\\b`, 'i');
+            return regex.test(lowerMsg);
+        });
 
         if (hasBadWord) {
             setErrorMsg('Whoa, watch your language, everyone!');
