@@ -14,7 +14,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
     const timeProgress = useMotionValue(0);
     const assetProgress = useMotionValue(0);
     // Visual progress is the minimum of Time vs Assets to ensure we respect BOTH min-duration AND loading
-    const progress = useTransform([timeProgress, assetProgress], ([t, a]) => Math.min(t, a));
+    const progress = useTransform([timeProgress, assetProgress], ([t, a]) => Math.min(t as number, a as number));
 
     const exitProgress = useMotionValue(0);
 

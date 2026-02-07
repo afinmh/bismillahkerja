@@ -167,7 +167,6 @@ export default function Flipbook({ onReady, showNavigation = true }: FlipbookPro
     return (
         <div className="flipbook-wrapper">
             <div className="flipbook-container">
-                {/* @ts-expect-error - react-pageflip types issue */}
                 <HTMLFlipBook
                     ref={flipbookRef}
                     width={isMobile ? dimensions.width : Math.floor(dimensions.width / 2)}
