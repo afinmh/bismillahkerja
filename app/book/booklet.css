@@ -1,0 +1,314 @@
+/* Booklet Page Styles */
+
+.booklet-page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #2D3748 url('/booklet/images/bg.jpg') center center / cover no-repeat fixed;
+}
+
+/* ================= SPLASH SCREEN ================= */
+#splash-screen {
+    position: fixed;
+    inset: 0;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0s linear;
+}
+
+#splash-screen.splash-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 0s, 0.3s;
+}
+
+.splash-content {
+    color: #1a202c;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: min(340px, 86vw);
+}
+
+.splash-title {
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.splash-title .splash-label {
+    margin-right: 12px;
+}
+
+.loading-bar {
+    width: 100%;
+    height: 18px;
+    border: 1px solid #000000;
+    padding: 2px;
+    overflow: hidden;
+    background: transparent;
+}
+
+.loading-bar-fill {
+    height: 100%;
+    width: 0;
+    background: #000000;
+    transition: width 0.2s ease-out;
+}
+
+/* ================= FLIPBOOK ================= */
+.flipbook-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.flipbook-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.flipbook {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.page {
+    background: #fffdf5;
+    /* Removed border to avoid glass-like frame effect */
+    border: none;
+    overflow: hidden;
+}
+
+.page img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.blank-page {
+    width: 100%;
+    height: 100%;
+    background: #fffdf5;
+}
+
+/* Right page (Even index) - Spine is on the LEFT */
+.blank-page-even {
+    box-shadow: inset 15px 0 20px -10px rgba(0, 0, 0, 0.15);
+    /* Shadow on left edge */
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle spine line */
+}
+
+/* Left page (Odd index) - Spine is on the RIGHT */
+.blank-page-odd {
+    box-shadow: inset -15px 0 20px -10px rgba(0, 0, 0, 0.15);
+    /* Shadow on right edge */
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    /* Subtle spine line */
+}
+
+/* Override react-pageflip glass/reflection effects */
+.flipbook .stf__block {
+    box-shadow: none !important;
+}
+
+/* Remove glossy/shiny overlay effect */
+.flipbook .page-wrapper::before,
+.flipbook .page-wrapper::after,
+.flipbook .stf__item::before,
+.flipbook .stf__item::after {
+    display: none !important;
+    opacity: 0 !important;
+}
+
+/* Fix hardcover elevation during flip - keep flat */
+.flipbook .--hard {
+    transform-style: flat !important;
+}
+
+/* Remove inner shadow/gradient that creates glass effect */
+.flipbook .stf__innerShadow,
+.stf__innerShadow {
+    display: none !important;
+    opacity: 0 !important;
+    background: none !important;
+}
+
+/* Remove all page shadows and reflections */
+.stf__parent *::before,
+.stf__parent *::after {
+    display: none !important;
+}
+
+/* Remove shadow overlays on pages */
+.stf__outerShadow {
+    display: none !important;
+}
+
+/* Remove page edge shadows */
+.stf__hardShadow,
+.stf__softShadow {
+    display: none !important;
+}
+
+/* Target all internal flipbook wrappers to remove gray/glass effects */
+.stf__parent,
+.stf__wrapper,
+.stf__block {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Ensure specific block elements inside are clear */
+.stf__block {
+    background: transparent !important;
+}
+
+/* Hide empty page placeholder/background */
+.stf__wrapper {
+    background: transparent !important;
+}
+
+/* Remove background from book container */
+.stf__parent {
+    background: transparent !important;
+}
+
+/* Hide the second page placeholder when only one page is visible */
+.stf__block .stf__item:empty {
+    /* Removed display:none to avoid hiding active pages that React hasn't populated yet */
+    background: transparent !important;
+    opacity: 0 !important;
+}
+
+/* ================= DESKTOP VERTICAL NAV ================= */
+.nav-vertical {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    z-index: 99;
+}
+
+.nav-vertical .nav-buttons {
+    position: relative;
+    background: rgba(0, 0, 0, 0.78);
+    padding: 20px 16px;
+    border-radius: 30px 0 0 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.18);
+}
+
+.nav-vertical .nav-btn {
+    background: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.25s, transform 0.25s;
+    text-decoration: none;
+    color: #111;
+}
+
+.nav-vertical .nav-btn:hover {
+    background: #e2e8f0;
+    transform: scale(1.06);
+}
+
+.nav-vertical .nav-btn:active {
+    transform: scale(0.98);
+}
+
+/* Hide vertical nav on small screens */
+@media (max-width: 767px) {
+    .nav-vertical {
+        display: none;
+    }
+}
+
+/* ================= MOBILE NAV ================= */
+.mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    padding: 8px 12px;
+    z-index: 9999;
+}
+
+.mobile-nav-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    background: rgba(0, 0, 0, 0.78);
+    padding: 12px 14px;
+    border-radius: 30px 30px 0 0;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.mobile-nav-buttons .nav-btn {
+    background: #fff;
+    border: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 28px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.18s, background 0.18s;
+    font-size: 14px;
+    text-decoration: none;
+    color: #111;
+}
+
+.mobile-nav-buttons .nav-btn:hover {
+    background: #e2e8f0;
+    transform: scale(1.06);
+}
+
+.mobile-nav-buttons .nav-btn:active {
+    transform: scale(0.98);
+}
+
+.nav-btn.nav-site svg {
+    width: 20px;
+    height: 20px;
+}
+
+@media (min-width: 768px) {
+    .mobile-nav {
+        display: none;
+    }
+}

@@ -1,0 +1,96 @@
+/* Dark, minimal background for the ghost theme */
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-inter, sans-serif);
+    /* Use global font if available */
+}
+
+/* Subtle background vignette/grid to tie in with the rest of the site */
+.not-found-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+    pointer-events: none;
+}
+
+.ghost-image-wrapper {
+    position: relative;
+    margin-bottom: 2rem;
+    animation: float 6s ease-in-out infinite;
+}
+
+.ghost-image {
+    max-width: 150px;
+    /* Reduced from 300px */
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+}
+
+.not-found-title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    /* Reduced significantly */
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+    background: linear-gradient(to right, #fff, #888);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.not-found-text {
+    max-width: 450px;
+    /* narrowed */
+    font-size: 0.9rem;
+    /* Reduced */
+    line-height: 1.5;
+    color: #a0a0a0;
+    margin-bottom: 2rem;
+}
+
+.back-home-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    background: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.back-home-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
