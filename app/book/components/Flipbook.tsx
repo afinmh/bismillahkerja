@@ -27,6 +27,7 @@ export default function Flipbook({ onReady, showNavigation = true }: FlipbookPro
     const [isMobile, setIsMobile] = useState(false);
     const [dimensions, setDimensions] = useState({ width: 765, height: 540 });
     const [isReady, setIsReady] = useState(false);
+    const [currentPage, setCurrentPage] = useState(0);
 
     // Build pages structure
     // Desktop: includes blank pages | Mobile: no blank pages
@@ -178,7 +179,10 @@ export default function Flipbook({ onReady, showNavigation = true }: FlipbookPro
                     maxHeight={4000}
                     showCover={true}
                     mobileScrollSupport={true}
-                    onFlip={playFlipSound}
+                    onFlip={(e) => {
+                        playFlipSound();
+                        setCurrentPage(e.data);
+                    }}
                     onInit={handleFlipbookInit}
                     className="flipbook"
                     style={{ margin: '0 auto' }}
@@ -230,6 +234,9 @@ export default function Flipbook({ onReady, showNavigation = true }: FlipbookPro
                             aria-label="Visit website"
                             title="Visit website"
                         >
+                            <div className={`nav-message ${currentPage >= 14 ? 'show' : ''}`}>
+                                Don't forget to visit my website
+                            </div>
                             <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
                                 <path fill="#111" d="M12 2a10 10 0 100 20 10 10 0 000-20zm5.93 7h-2.07a15.9 15.9 0 00-1.2-3.12A8.01 8.01 0 0117.93 9zM12 4.06c.9 1.06 1.66 2.5 2.22 4.06H9.78C10.34 6.56 11.1 5.12 12 4.06zM4.07 11a6.98 6.98 0 010-2h2.07c.06.67.17 1.33.33 2H4.07zM12 19.94c-.9-1.06-1.66-2.5-2.22-4.06h4.44c-.56 1.56-1.32 3-2.22 4.06z" />
                             </svg>
@@ -259,6 +266,9 @@ export default function Flipbook({ onReady, showNavigation = true }: FlipbookPro
                             href="/showcase"
                             aria-label="Visit website"
                         >
+                            <div className={`mobile-nav-message ${currentPage >= 10 ? 'show' : ''}`}>
+                                Don't forget to visit my website
+                            </div>
                             <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
                                 <path fill="#111" d="M12 2a10 10 0 100 20 10 10 0 000-20zm5.93 7h-2.07a15.9 15.9 0 00-1.2-3.12A8.01 8.01 0 0117.93 9zM12 4.06c.9 1.06 1.66 2.5 2.22 4.06H9.78C10.34 6.56 11.1 5.12 12 4.06zM4.07 11a6.98 6.98 0 010-2h2.07c.06.67.17 1.33.33 2H4.07zM12 19.94c-.9-1.06-1.66-2.5-2.22-4.06h4.44c-.56 1.56-1.32 3-2.22 4.06z" />
                             </svg>

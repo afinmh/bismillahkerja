@@ -53,14 +53,14 @@ const mobilePositions: Record<number, Position> = {
 
 // All photo data with real activity captions
 const allPhotoData = [
-    { id: 1, src: '/activity/1.jpg', caption: 'Study Visit from IPWIJA University Jakarta', desktopOnly: true },
-    { id: 2, src: '/activity/2.jpg', caption: 'Campus Introduction Expo' },
-    { id: 3, src: '/activity/3.jpg', caption: 'Basic Programming Lab Assistant 2024' },
-    { id: 4, src: '/activity/4.jpg', caption: 'LLDIKTI Region XVI Accreditation Visit' },
-    { id: 8, src: '/activity/8.jpg', caption: 'ITENAS Badminton Student Unit', desktopOnly: true },
-    { id: 9, src: '/activity/9.webp', caption: 'Cheator Team – Prokimnas' },
-    { id: 10, src: '/activity/10.webp', caption: 'Itenas Award 2025 - ICT Lab' },
-    { id: 11, src: '/activity/11.jpg', caption: 'Industrial Visit to Huawei' },
+    { id: 1, src: 'showcase/activity/1.webp', caption: 'Study Visit from IPWIJA University Jakarta', desktopOnly: true },
+    { id: 2, src: 'showcase/activity/2.webp', caption: 'Campus Introduction Expo' },
+    { id: 3, src: 'showcase/activity/3.webp', caption: 'Basic Programming Lab Assistant 2024' },
+    { id: 4, src: 'showcase/activity/4.webp', caption: 'LLDIKTI Region XVI Accreditation Visit' },
+    { id: 8, src: 'showcase/activity/8.webp', caption: 'ITENAS Badminton Student Unit', desktopOnly: true },
+    { id: 9, src: 'showcase/activity/9.webp', caption: 'Cheator Team – Prokimnas' },
+    { id: 10, src: 'showcase/activity/10.webp', caption: 'Itenas Award 2025 - ICT Lab' },
+    { id: 11, src: 'showcase/activity/11.webp', caption: 'Industrial Visit to Huawei' },
 ];
 
 // Individual draggable photo card component

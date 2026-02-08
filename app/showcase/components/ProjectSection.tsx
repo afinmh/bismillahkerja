@@ -9,24 +9,24 @@ const projects = [
         title: 'Nadella-Tech',
         category: 'Professional Work',
         description: 'Official company profile website developed for Nadella-Tech during a professional internship.',
-        image: '/showcase/project/nadella-tech.png',
+        image: '/showcase/project/nadella-tech.webp',
         link: 'https://nadella-tech.vercel.app'
     },
     {
-        id: 'si-mbah',
-        title: 'Si-Mbah',
+        id: 'Sumber Herbal',
+        title: 'Sumber Herbal',
         category: 'AI & Chatbot',
         description: 'RAG-powered chatbot providing information sourced from a knowledge base of herbal plant journals.',
-        image: '/showcase/project/si-mbah.png',
-        link: 'https://si-mbah.vercel.app'
+        image: '/showcase/project/sumberherbal.webp',
+        link: 'https://sumberherbal.vercel.app'
     },
     {
-        id: 'handventure',
-        title: 'Handventure',
-        category: 'Computer Vision',
-        description: 'Real-time Indonesian Sign Language (BISINDO) detection application utilizing MediaPipe.',
-        image: '/showcase/project/handventure.png',
-        link: 'https://handventure.vercel.app'
+        id: 'NihonGo!',
+        title: 'NihonGo!',
+        category: 'Text-to-Speech',
+        description: 'Is a game-style Japanese learning platform with fun chapters full of vocabulary and interactive exercises. Guided by an interactive waifu',
+        image: '/showcase/project/nihongoo.webp',
+        link: 'https://nihongoo.vercel.app'
     }
 ];
 

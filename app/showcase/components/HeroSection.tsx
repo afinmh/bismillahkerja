@@ -361,7 +361,7 @@ export default function HeroSection({ isVisible }: HeroSectionProps) {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 1.8 }}
             >
-                *Click on any side to see description
+                Click any side for description
             </motion.div>
 
             <motion.div

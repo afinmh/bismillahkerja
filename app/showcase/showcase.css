@@ -316,37 +316,37 @@ body::-webkit-scrollbar {
 
 .cube-face.front {
     transform: translateZ(calc(var(--cube-size) / 2));
-    background-image: url('/showcase/box/front.png');
+    background-image: url('/showcase/box/front.webp');
     background-color: #fff;
 }
 
 .cube-face.back {
     transform: rotateY(180deg) translateZ(calc(var(--cube-size) / 2));
-    background-image: url('/showcase/box/back.png');
+    background-image: url('/showcase/box/back.webp');
     background-color: #fff;
 }
 
 .cube-face.right {
     transform: rotateY(90deg) translateZ(calc(var(--cube-size) / 2));
-    background-image: url('/showcase/box/right.png');
+    background-image: url('/showcase/box/right.webp');
     background-color: #fff;
 }
 
 .cube-face.left {
     transform: rotateY(-90deg) translateZ(calc(var(--cube-size) / 2));
-    background-image: url('/showcase/box/left.png');
+    background-image: url('/showcase/box/left.webp');
     background-color: #fff;
 }
 
 .cube-face.top {
     transform: rotateX(90deg) translateZ(calc(var(--cube-size) / 2));
-    background-image: url('/showcase/box/top.png');
+    background-image: url('/showcase/box/top.webp');
     background-color: #fff;
 }
 
 .cube-face.bottom {
     transform: rotateX(-90deg) translateZ(calc(var(--cube-size) / 2));
-    background-image: url('/showcase/box/bottom.png');
+    background-image: url('/showcase/box/bottom.webp');
     background-color: #fff;
 }
 
@@ -358,12 +358,45 @@ body::-webkit-scrollbar {
 /* Cube hint note */
 .cube-note {
     position: absolute;
-    bottom: clamp(20px, 3vh, 40px);
-    left: clamp(10px, 2vw, 30px);
-    font-size: clamp(12px, 0.9vw, 14px);
-    color: var(--color-accent);
-    font-style: italic;
+    bottom: clamp(30px, 5vh, 60px);
+    left: clamp(20px, 4vw, 100px);
+    font-size: clamp(14px, 1.1vw, 18px);
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    padding: 10px 20px;
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
     z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cube-note::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.4;
+        transform: scale(0.8);
+    }
 }
 
 /* Scroll Down Indicator */
@@ -450,9 +483,19 @@ body::-webkit-scrollbar {
         --cube-size: clamp(160px, 50vw, 240px);
     }
 
-    .informatics-text,
-    .cube-note {
+    .informatics-text {
         display: none;
+    }
+
+    .cube-note {
+        bottom: 25%;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        background: rgba(0, 0, 0, 0.85);
+        padding: 8px 16px;
+        color: #ffffff;
+        border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
     .scroll-indicator {

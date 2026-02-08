@@ -221,6 +221,7 @@
 }
 
 .nav-vertical .nav-btn {
+    position: relative;
     background: #fff;
     border: none;
     width: 40px;
@@ -277,6 +278,7 @@
 }
 
 .mobile-nav-buttons .nav-btn {
+    position: relative;
     background: #fff;
     border: none;
     width: 46px;
@@ -311,4 +313,77 @@
     .mobile-nav {
         display: none;
     }
+}
+
+/* ================= MESSAGE BUBBLE ================= */
+.nav-message {
+    position: absolute;
+    right: 65px;
+    background: #fff;
+    color: #111;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateX(15px);
+    pointer-events: none;
+}
+
+.nav-message.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.nav-message::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #fff;
+}
+
+.mobile-nav-message {
+    position: absolute;
+    bottom: 85px;
+    left: 50%;
+    transform: translateX(-50%) translateY(15px);
+    background: #fff;
+    color: #111;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    z-index: 10000;
+}
+
+.mobile-nav-message.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.mobile-nav-message::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #fff;
 }
