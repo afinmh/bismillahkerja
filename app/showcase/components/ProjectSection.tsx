@@ -15,7 +15,7 @@ const projects = [
     {
         id: 'Sumber Herbal',
         title: 'Sumber Herbal',
-        category: 'AI & Chatbot',
+        category: 'Research Project',
         description: 'RAG-powered chatbot providing information sourced from a knowledge base of herbal plant journals.',
         image: '/showcase/project/sumberherbal.webp',
         link: 'https://sumberherbal.vercel.app'
@@ -23,7 +23,7 @@ const projects = [
     {
         id: 'NihonGo!',
         title: 'NihonGo!',
-        category: 'Text-to-Speech',
+        category: 'Academic Project',
         description: 'Is a game-style Japanese learning platform with fun chapters full of vocabulary and interactive exercises, with virtual waifu',
         image: '/showcase/project/nihongoo.webp',
         link: 'https://nihongoo.vercel.app'
@@ -80,7 +80,7 @@ export default function ProjectSection() {
                             </motion.span>
                         ))}
                     </motion.h2>
-                    <a href="/projek" className="view-all-link">
+                    <a href="/project" className="view-all-link">
                         View All Projects <span className="arrow">→</span>
                     </a>
                 </div>

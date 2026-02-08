@@ -7,6 +7,7 @@ import HeroSection from './components/HeroSection';
 import ProjectSection from './components/ProjectSection';
 import ActivitySection from './components/ActivitySection';
 import AboutSection from './components/AboutSection';
+import ScrollToTop from './components/ScrollToTop';
 import './showcase.css';
 
 export default function ShowcasePage() {
@@ -51,6 +52,7 @@ export default function ShowcasePage() {
                     <SplashScreen onComplete={handleSplashComplete} />
                 )}
             </AnimatePresence>
+            <ScrollToTop />
         </main>
     );
 }
