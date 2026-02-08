@@ -24,7 +24,7 @@ const projects = [
         id: 'NihonGo!',
         title: 'NihonGo!',
         category: 'Text-to-Speech',
-        description: 'Is a game-style Japanese learning platform with fun chapters full of vocabulary and interactive exercises. Guided by an interactive waifu',
+        description: 'Is a game-style Japanese learning platform with fun chapters full of vocabulary and interactive exercises, with virtual waifu',
         image: '/showcase/project/nihongoo.webp',
         link: 'https://nihongoo.vercel.app'
     }

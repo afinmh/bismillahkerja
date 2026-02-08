@@ -266,7 +266,7 @@ export default function Flipbook({ onReady, showNavigation = true }: FlipbookPro
                             href="/showcase"
                             aria-label="Visit website"
                         >
-                            <div className={`mobile-nav-message ${currentPage >= 10 ? 'show' : ''}`}>
+                            <div className={`mobile-nav-message ${currentPage >= 13 ? 'show' : ''}`}>
                                 Don't forget to visit my website
                             </div>
                             <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">

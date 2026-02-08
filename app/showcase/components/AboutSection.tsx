@@ -39,6 +39,7 @@ const ChatComponent = () => {
     const [showAvatarPicker, setShowAvatarPicker] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [errorMsg, setErrorMsg] = useState('');
+    const [nameError, setNameError] = useState(false);
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const badWords = [
@@ -60,7 +61,7 @@ const ChatComponent = () => {
         }
         setIdUser(storedId);
 
-        const storedName = localStorage.getItem('comment_user_name') || 'Visitor';
+        const storedName = localStorage.getItem('comment_user_name') || '';
         setUserName(storedName);
 
         const storedAvatar = localStorage.getItem('comment_user_avatar') || '/profile/1-robot.png';
@@ -83,6 +84,16 @@ const ChatComponent = () => {
 
     const handleSendMessage = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (!userName.trim()) {
+            setNameError(true);
+            setErrorMsg('Enter Your Name');
+            setTimeout(() => setErrorMsg(''), 3000);
+            return;
+        }
+
+        setNameError(false);
+        setErrorMsg('');
+
         if (!inputValue.trim()) return;
 
         // Check for bad words
@@ -97,8 +108,6 @@ const ChatComponent = () => {
             setTimeout(() => setErrorMsg(''), 3000);
             return;
         }
-
-        setErrorMsg('');
 
         // Persist local identity changes if any
         localStorage.setItem('comment_user_name', userName);
@@ -230,10 +239,13 @@ const ChatComponent = () => {
                     <div className="input-vertical-group">
                         <input
                             type="text"
-                            className="name-input"
-                            placeholder="Your Name"
+                            className={`name-input ${nameError ? 'error' : ''}`}
+                            placeholder="Enter Your Name (You can also change avatar)"
                             value={userName}
-                            onChange={(e) => setUserName(e.target.value)}
+                            onChange={(e) => {
+                                setUserName(e.target.value);
+                                if (e.target.value.trim()) setNameError(false);
+                            }}
                         />
                         <input
                             type="text"
