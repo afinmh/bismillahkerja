@@ -40,17 +40,20 @@ const ChatComponent = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [errorMsg, setErrorMsg] = useState('');
     const [nameError, setNameError] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [lastCommentTime, setLastCommentTime] = useState(0);
     const scrollRef = useRef<HTMLDivElement>(null);
 
     const badWords = [
         // Bahasa Indonesia
         'anjing', 'goblok', 'bangsat', 'babi', 'kunyuk', 'asu', 'bajingan', 'tolol',
-        'idiot', 'kontol', 'memek', 'ngentot', 'brengsek', 'kampret', 'keparat',
+        'idiot', 'kontol', 'memek', 'ngentot', 'brengsek', 'kampret', 'keparat', "kntl", "mmk",
         'setan', 'iblis', 'sialan', 'pecundang', 'tai', 'bacot', 'lonte', 'pelacur', 'bego', 'gila', 'bangke',
         // Bahasa Inggris
         'fuck', 'shit', 'bitch', 'ass', 'dick', 'bastard', 'crap', 'jerk',
         'idiot', 'moron', 'stupid', 'dumb', 'slut', 'whore', 'damn',
-        'asshole', 'fucker', 'bullshit', 'loser', 'screw', 'nuts', 'prick'
+        'asshole', 'fucker', 'bullshit', 'loser', 'screw', 'nuts', 'prick',
+        'penis', 'vagina', 'tit', 'boob', 'pussy', 'cock', 'cunt', 'peler', 'pepek'
     ];
 
     // Initialize Identity
@@ -84,6 +87,9 @@ const ChatComponent = () => {
 
     const handleSendMessage = async (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (isSubmitting) return;
+
         if (!userName.trim()) {
             setNameError(true);
             setErrorMsg('Enter Your Name');
@@ -96,11 +102,25 @@ const ChatComponent = () => {
 
         if (!inputValue.trim()) return;
 
-        // Check for bad words
+        // Validation for length to prevent spam
+        if (userName.trim().length > 30) {
+            setErrorMsg('Name is too long (max 30 chars)');
+            setTimeout(() => setErrorMsg(''), 3000);
+            return;
+        }
+
+        if (inputValue.trim().length > 300) {
+            setErrorMsg('Message is too long (max 300 chars)');
+            setTimeout(() => setErrorMsg(''), 3000);
+            return;
+        }
+
+        // Check for bad words in name and message
+        const lowerName = userName.toLowerCase();
         const lowerMsg = inputValue.toLowerCase();
         const hasBadWord = badWords.some(word => {
             const regex = new RegExp(`\\b${word}\\b`, 'i');
-            return regex.test(lowerMsg);
+            return regex.test(lowerMsg) || regex.test(lowerName);
         });
 
         if (hasBadWord) {
@@ -108,6 +128,16 @@ const ChatComponent = () => {
             setTimeout(() => setErrorMsg(''), 3000);
             return;
         }
+
+        // Cooldown check (prevent spamming)
+        const now = Date.now();
+        if (now - lastCommentTime < 10000) { // 10 seconds timeout
+            setErrorMsg('Please wait a moment before sending again.');
+            setTimeout(() => setErrorMsg(''), 3000);
+            return;
+        }
+
+        setIsSubmitting(true);
 
         // Persist local identity changes if any
         localStorage.setItem('comment_user_name', userName);
@@ -130,9 +160,12 @@ const ChatComponent = () => {
             if (savedComment.id) {
                 setComments(prev => [...prev, savedComment]);
                 setInputValue('');
+                setLastCommentTime(now);
             }
         } catch (e) {
             console.error('Failed to post comment', e);
+        } finally {
+            setIsSubmitting(false);
         }
     };
 
@@ -256,8 +289,8 @@ const ChatComponent = () => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="chat-send-btn">
-                    Send
+                <button type="submit" className="chat-send-btn" disabled={isSubmitting}>
+                    {isSubmitting ? 'Sending...' : 'Send'}
                 </button>
             </form>
         </div>

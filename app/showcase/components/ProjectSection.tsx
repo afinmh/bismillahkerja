@@ -68,7 +68,7 @@ export default function ProjectSection() {
                         }}
                         className="section-title"
                     >
-                        {Array.from("SELECTED WORKS").map((char, index) => (
+                        {Array.from("FEATURED PROJECTS").map((char, index) => (
                             <motion.span
                                 key={index}
                                 variants={{
