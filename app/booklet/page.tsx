@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import dynamic from 'next/dynamic';
-import SplashScreen from './components/SplashScreen';
-import './booklet.css';
+import SplashScreen from '../book/components/SplashScreen';
+import '../book/booklet.css';
 
-const Flipbook = dynamic(() => import('./components/Flipbook'), {
+const Flipbook = dynamic(() => import('../book/components/Flipbook'), {
     ssr: false,
 });
 

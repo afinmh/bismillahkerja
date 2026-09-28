@@ -38,16 +38,14 @@ export default function SplashScreen({ images, onComplete }: SplashScreenProps) 
             return;
         }
 
-        // Add audio file to preload list manually for completeness
-        const allAssets = [...images, '/booklet/audio/page-flip.wav'];
         let activeLoads = 0;
 
-        allAssets.forEach(src => {
+        images.forEach(src => {
             const img = new Image();
             img.onload = img.onerror = () => {
                 activeLoads++;
                 // Target progress based on real items loaded
-                const target = (activeLoads / allAssets.length) * 100;
+                const target = (activeLoads / images.length) * 100;
                 progressSpring.set(target);
             };
             img.src = src;

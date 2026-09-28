@@ -1,17 +1,13 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { db } from '@/lib/db';
 
 export async function GET() {
-    const { data, error } = await supabase
-        .from('comments')
-        .select('*')
-        .order('created_at', { ascending: true });
-
-    if (error) {
+    try {
+        const { rows } = await db.execute('SELECT * FROM comments ORDER BY created_at ASC');
+        return NextResponse.json(rows);
+    } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
-
-    return NextResponse.json(data);
 }
 
 export async function POST(request: Request) {
@@ -57,30 +53,26 @@ export async function POST(request: Request) {
     // Basic Rate Limiting per User ID (check if user posted in last 10 seconds)
     const tenSecondsAgo = new Date(Date.now() - 10000).toISOString();
 
-    const { data: recentComments, error: fetchError } = await supabase
-        .from('comments')
-        .select('id')
-        .eq('id_user', id_user)
-        .gte('created_at', tenSecondsAgo);
+    try {
+        const { rows: recentComments } = await db.execute({
+            sql: 'SELECT id FROM comments WHERE id_user = ? AND created_at >= ?',
+            args: [id_user, tenSecondsAgo]
+        });
 
-    if (fetchError) {
-        return NextResponse.json({ error: fetchError.message }, { status: 500 });
-    }
+        if (recentComments.length > 0) {
+            return NextResponse.json({ error: 'Please wait before sending another message' }, { status: 429 });
+        }
 
-    if (recentComments && recentComments.length > 0) {
-        return NextResponse.json({ error: 'Please wait before sending another message' }, { status: 429 });
-    }
+        const id = crypto.randomUUID();
+        const created_at = new Date().toISOString();
 
-    const { data, error } = await supabase
-        .from('comments')
-        .insert([
-            { id_user, nama, message, avatar }
-        ])
-        .select();
+        await db.execute({
+            sql: 'INSERT INTO comments (id, id_user, nama, message, avatar, created_at) VALUES (?, ?, ?, ?, ?, ?)',
+            args: [id, id_user, nama, message, avatar, created_at]
+        });
 
-    if (error) {
+        return NextResponse.json({ id, id_user, nama, message, avatar, created_at });
+    } catch (error: any) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
-
-    return NextResponse.json(data[0]);
 }

@@ -230,7 +230,7 @@ export default function Flipbook({ onReady, showNavigation = true }: FlipbookPro
                         </button>
                         <a
                             className="nav-btn nav-site"
-                            href="/showcase"
+                            href="/"
                             aria-label="Visit website"
                             title="Visit website"
                         >
@@ -263,7 +263,7 @@ export default function Flipbook({ onReady, showNavigation = true }: FlipbookPro
                         </button>
                         <a
                             className="nav-btn nav-site"
-                            href="/showcase"
+                            href="/"
                             aria-label="Visit website"
                         >
                             <div className={`mobile-nav-message ${currentPage >= 13 ? 'show' : ''}`}>

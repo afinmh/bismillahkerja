@@ -221,12 +221,12 @@ export default function ProjectPage() {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6 }}
                 >
-                    <Link href="/showcase" className="back-link">
+                    <Link href="/" className="back-link">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <line x1="19" y1="12" x2="5" y2="12"></line>
                             <polyline points="12 19 5 12 12 5"></polyline>
                         </svg>
-                        Back to Showcase
+                        Back to Home
                     </Link>
                 </motion.div>
 
