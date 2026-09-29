@@ -5,6 +5,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const projects = [
     {
+        id: 'ispeak-2',
+        title: 'ISPEAK2',
+        category: 'Language Assessment Platform',
+        description: 'Automated English proficiency assessment platform using speech recordings to classify CEFR levels from A2 to C2.',
+        image: '/showcase/project/ispeak2.webp',
+        link: 'https://ispeak.my.id'
+    },
+    {
         id: 'nadella',
         title: 'Nadella-Tech',
         category: 'Professional Work',
@@ -31,7 +39,7 @@ const projects = [
 ];
 
 export default function ProjectSection() {
-    const [activeId, setActiveId] = useState<string | null>('nadella');
+    const [activeId, setActiveId] = useState<string | null>('ispeak-2');
     const [isHovered, setIsHovered] = useState(false);
 
     useEffect(() => {
@@ -86,13 +94,12 @@ export default function ProjectSection() {
                 </div>
 
                 <div className="project-gallery">
-                    {projects.map((project) => (
+                    {projects.map((project, index) => (
                         <motion.div
                             key={project.id}
-                            layout
                             className={`project-card ${activeId === project.id ? 'active' : ''}`}
                             onClick={() => setActiveId(project.id)}
-                            onHoverStart={() => setActiveId(project.id)}
+                            onMouseEnter={() => setActiveId(project.id)}
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -113,9 +120,9 @@ export default function ProjectSection() {
                             <div className="project-info">
                                 <div className="project-top-row">
                                     <div className="project-title-wrapper">
-                                        <span className="project-number">{project.id === 'nadella' ? '01' : project.id === 'si-mbah' ? '02' : '03'}</span>
-                                        <h3 className="project-title">{project.title}</h3>
-                                        {activeId === project.id && <span className="project-category badge">{project.category}</span>}
+                                        <span className="project-number">{String(index + 1).padStart(2, '0')}</span>
+                                        <h3 className="project-title horizontal">{project.title}</h3>
+                                        <h3 className="project-title vertical">{project.title}</h3>
                                     </div>
                                     <a href={project.link} className="project-link desktop-only" target="_blank" rel="noopener noreferrer">
                                         Visit Site
@@ -125,26 +132,16 @@ export default function ProjectSection() {
                                         </svg>
                                     </a>
                                 </div>
-                                <AnimatePresence>
-                                    {activeId === project.id && (
-                                        <motion.div
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: 'auto' }}
-                                            exit={{ opacity: 0, height: 0 }}
-                                            transition={{ duration: 0.3 }}
-                                            className="project-details"
-                                        >
-                                            <p className="project-desc">{project.description}</p>
-                                            <a href={project.link} className="project-link mobile-only" target="_blank" rel="noopener noreferrer">
-                                                Visit Site
-                                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                                    <line x1="7" y1="17" x2="17" y2="7"></line>
-                                                    <polyline points="7 7 17 7 17 17"></polyline>
-                                                </svg>
-                                            </a>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
+                                <div className="project-details">
+                                    <p className="project-desc">{project.description}</p>
+                                    <a href={project.link} className="project-link mobile-only" target="_blank" rel="noopener noreferrer">
+                                        Visit Site
+                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                            <line x1="7" y1="17" x2="17" y2="7"></line>
+                                            <polyline points="7 7 17 7 17 17"></polyline>
+                                        </svg>
+                                    </a>
+                                </div>
                             </div>
                         </motion.div>
                     ))}

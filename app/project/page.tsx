@@ -11,6 +11,15 @@ const projectCategories = [
         title: "Professional Work",
         projects: [
             {
+                id: "ispeak-2",
+                title: "ISPEAK2",
+                category: "Language Assessment Platform",
+                description: "Automated English proficiency assessment platform using speech recordings to classify CEFR levels from A2 to C2.",
+                tech: ["Machine Learning", "Whisper", "Speech Recognition"],
+                image: "/showcase/project/ispeak2.webp",
+                link: "https://ispeak.my.id"
+            },
+            {
                 id: "project-1",
                 title: "Nadella-Tech",
                 category: "Company Profile",
@@ -39,10 +48,10 @@ const projectCategories = [
             },
             {
                 id: "project-4",
-                title: "GEOS",
-                category: "Government Website",
-                description: "Geospatial web platform for Indonesian regional data visualization, developed for a government institution.",
-                tech: ["PHP", "Amazon S3", "Security"],
+                title: "GIS Dashboards",
+                category: "Government Dashboards",
+                description: "Geospatial (GIS) dashboards developed for multiple government agencies, including the forestry and electricity sectors, to facilitate spatial data monitoring and regional visualization.",
+                tech: ["GIS", "Data Visualization", "Web Dashboard"],
                 image: "/showcase/project/placeholder.png",
                 link: "#"
             }

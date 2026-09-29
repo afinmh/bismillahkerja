@@ -106,9 +106,9 @@ interface FaceContent {
 
 const faceContentMap: Record<Face, FaceContent> = {
     front: {
-        title: "Informatics Student",
-        subtitle: "at Institut Teknologi Nasional Bandung",
-        description: "I am an Informatics student with a strong interest in Machine Learning, Artificial Intelligence, Data Science, and Web Development."
+        title: "Informatics Graduate",
+        subtitle: "from Institut Teknologi Nasional Bandung",
+        description: "I am an Informatics graduate passionate about building intelligent systems, specializing in Artificial Intelligence, Machine Learning, and Web Development."
     },
     back: {
         title: "Manchester United",
@@ -123,7 +123,7 @@ const faceContentMap: Record<Face, FaceContent> = {
     left: {
         title: "Artificial Intelligence",
         subtitle: "Personal Interest",
-        description: "Artificial Intelligence is the field I am most passionate about, including ML, DL, and LLM.I aim not only to use AI, but also to build it for real-world impact."
+        description: "My fascination with AI began with Machine Learning and Deep Learning. Now, I have a profound interest in Large Language Models (LLMs), striving to build impactful and intelligent solutions."
     },
     top: {
         title: "ICT Laboratory",

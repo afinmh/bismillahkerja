@@ -36,12 +36,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
         // Ref to track exit status to avoid duplicate calls
         const isExitingRef = { current: false };
 
-        const assetsToLoad = [
-            '/showcase/project/nadella-tech.png',
-            '/showcase/project/si-mbah.png',
-            '/showcase/project/handventure.png',
-            '/404.png'
-        ];
+        const assetsToLoad: string[] = [];
 
         let loadedCount = 0;
         const total = assetsToLoad.length;

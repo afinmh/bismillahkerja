@@ -50,59 +50,101 @@ export default function BookSection() {
                     transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
                 >
                     {/* Left Info Column */}
-                    <div className="book-info">
-                        <div className="book-overline">
+                    <motion.div
+                        className="book-info"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        variants={{
+                            hidden: { opacity: 0 },
+                            visible: {
+                                opacity: 1,
+                                transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+                            }
+                        }}
+                    >
+                        <motion.div
+                            className="book-overline"
+                            variants={{
+                                hidden: { opacity: 0, y: 15 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                            }}
+                        >
                             <span>PRINT &amp; DIGITAL ARCHIVE</span>
                             <span className="book-overline-sep">/</span>
                             <span>15 SPREADS</span>
-                        </div>
+                        </motion.div>
 
-                        <h3 className="book-headline">
+                        <motion.h3
+                            className="book-headline"
+                            variants={{
+                                hidden: { opacity: 0, y: 15 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                            }}
+                        >
                             Turn the Pages of My Journey &amp; Works
-                        </h3>
+                        </motion.h3>
 
-                        <p className="book-description">
+                        <motion.p
+                            className="book-description"
+                            variants={{
+                                hidden: { opacity: 0, y: 15 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                            }}
+                        >
                             A curated physical-to-digital publication documenting design systems, software engineering, and academic leadership — bound in a realistic 3D format with authentic page-flip acoustics.
-                        </p>
+                        </motion.p>
 
                         {/* Editorial Chapters / Table of Contents */}
-                        <div className="book-contents-table">
+                        <motion.div
+                            className="book-contents-table"
+                            variants={{
+                                hidden: { opacity: 0, y: 15 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                            }}
+                        >
                             <div className="book-toc-header">
                                 <span>CHAPTERS &amp; SPREADS</span>
                                 <span>INDEX</span>
                             </div>
                             <div className="book-toc-list">
-                                <div className="book-toc-item">
+                                <motion.div className="book-toc-item" variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0, transition: { duration: 0.4 } } }}>
                                     <span className="toc-number">01</span>
                                     <div className="toc-text">
                                         <div className="toc-title">Introduction &amp; Philosophy</div>
                                         <div className="toc-sub">Design methodology &amp; background</div>
                                     </div>
                                     <span className="toc-pages">P. 01–03</span>
-                                </div>
+                                </motion.div>
 
-                                <div className="book-toc-item">
+                                <motion.div className="book-toc-item" variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0, transition: { duration: 0.4 } } }}>
                                     <span className="toc-number">02</span>
                                     <div className="toc-text">
                                         <div className="toc-title">Selected Works &amp; Case Studies</div>
                                         <div className="toc-sub">Web apps, AI tools &amp; engineering</div>
                                     </div>
                                     <span className="toc-pages">P. 04–10</span>
-                                </div>
+                                </motion.div>
 
-                                <div className="book-toc-item">
+                                <motion.div className="book-toc-item" variants={{ hidden: { opacity: 0, x: -10 }, visible: { opacity: 1, x: 0, transition: { duration: 0.4 } } }}>
                                     <span className="toc-number">03</span>
                                     <div className="toc-text">
                                         <div className="toc-title">Leadership, Labs &amp; Milestones</div>
                                         <div className="toc-sub">Academic journey &amp; certifications</div>
                                     </div>
                                     <span className="toc-pages">P. 11–15</span>
-                                </div>
+                                </motion.div>
                             </div>
-                        </div>
+                        </motion.div>
 
                         {/* Actions */}
-                        <div className="book-actions">
+                        <motion.div
+                            className="book-actions"
+                            variants={{
+                                hidden: { opacity: 0, y: 15 },
+                                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+                            }}
+                        >
                             <Link href="/booklet" className="book-primary-btn">
                                 <span>Read Interactive Book</span>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -118,8 +160,8 @@ export default function BookSection() {
                                 </svg>
                                 <span>Includes page-turn audio</span>
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
 
                     {/* Right Visual 3D Preview Column (Hover only, no link) */}
                     <div className="book-visual-link">
